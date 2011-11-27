@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Usage example:
+    ant -Dplay.path=<play path> auto-test
+
+Or with PLAY_PATH environment variable:
+    ant auto-test
+-->
+<!-- Author: Axel -->
+<project name="TicTacToe" basedir=".">
+
+    <property name="play.default.path" value=".."/>
+	<!--    <property environment="env"/>
+    <condition property="play.path" value="${env.PLAY_PATH}">
+        <isset property="env.PLAY_PATH"/>
+    </condition>-->
+    <property name="play.path" value="${play.default.path}"/>
+    <property name="play.antify.path" value="${play.path}/modules/antify-1.0"/>
+    <property name="test.start.delay" value="5"/>
+
+    <import file="${play.path}/resources/application-build.xml"/>
+	
+	<target name="build-war" depends="auto-test,clean">
+		<mkdir dir="${play.path}/dist"/>
+        <delete file="${basedir}/tictac.war"/> 
+		 <exec executable="cmd.exe" dir=".." >
+            <arg value="/c"/>
+            <arg value="play war tictactoe -o Dist/TicTacToe --zip"/>
+        </exec> 
+    </target> 
+	    <target name="clean" description="Clean the war directory before compiling the war again">
+        <delete dir="${play.path}/dist"/>
+    </target>
+</project>

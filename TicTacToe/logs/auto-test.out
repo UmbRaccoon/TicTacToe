@@ -1,0 +1,9 @@
+20:33:16,368 INFO  ~ Starting c:\Hugb\TicTacToe\TicTacToe
+20:33:17,612 WARN  ~ You're running Play! in DEV mode
+~
+~ Go to http://localhost:9000/@tests to run the tests
+~
+20:33:17,882 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+20:33:28,731 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0
+20:33:28,784 INFO  ~ Application 'TicTacToe' is now started !
+@KILLED
