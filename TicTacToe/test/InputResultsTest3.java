@@ -65,7 +65,15 @@ public class InputResultsTest3 {
 		Assert.assertEquals(true, IR4.isVictory());
 		Assert.assertEquals(2, IR4.getVictoryPlayer());
 		Assert.assertEquals(6, IR4.getVictoryLine());
-		
+		resetArr();
+        arr[0] = 2;
+        arr[2] = 1;
+        arr[5] = 2;
+        arr[6] = 1;
+        arr[7] = 2;
+        arr[8] = 1;
+        InputResults IR5 = new InputResults(arr, 4, 1);
+        Assert.assertEquals(true, IR4.isVictory());
 		
 		
 	}

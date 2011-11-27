@@ -31,4 +31,20 @@ Or with PLAY_PATH environment variable:
 	    <target name="clean" description="Clean the war directory before compiling the war again">
         <delete dir="${play.path}/dist"/>
     </target>
+	
+	<target name="test-n-run" depends="auto-test" description="Tests and runs the application">
+        <playconfload applicationDir="${basedir}" playId="${play.id}"/>
+        <java classname="play.server.Server" fork="yes" failonerror="yes">
+            <classpath>
+                <path refid="play.classpath"/>
+                <path refid="modules.classpath"/>
+                <path refid="application.classpath"/>
+            </classpath>
+            <jvmarg line="-javaagent:${play.path}/framework/play-${version}.jar -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n"/>
+            <sysproperty key="play.id" value="${play.id}"/>
+            <sysproperty key="play.debug" value="true"/>
+            <sysproperty key="precompiled" value="${precompiled}"/>
+            <sysproperty key="application.path" value="${basedir}"/>
+        </java>
+    </target>
 </project>

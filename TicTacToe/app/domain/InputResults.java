@@ -59,7 +59,7 @@ public class InputResults
             this.victoryLine = 3+(b/3);
             return true;
         }
-        else if (squareId == 0 || squareId == 4 || squareId == 8)
+        else if (squareId == 0 || squareId == 8)
         {
             if (arr[0] == arr[4] && arr[4] == arr[8])
             {
@@ -67,14 +67,26 @@ public class InputResults
                 return true;
             }
         }
-        else if (squareId == 2 || squareId == 4 || squareId == 6)
+        else if (squareId == 2 || squareId == 6)
         {
             if(arr[2] == arr[4] && arr[4] == arr[6])
             {
                 this.victoryLine = 7;
                 return true;
             }
-
+        }
+        else if (squareId == 4)
+        {
+            if (arr[0] == arr[4] && arr[4] == arr[8])
+            {
+                this.victoryLine = 6;
+                return true;
+            }
+            else if(arr[2] == arr[4] && arr[4] == arr[6])
+            {
+                this.victoryLine = 7;
+                return true;
+            }
         }
         return false;
     }
